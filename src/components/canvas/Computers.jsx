@@ -5,15 +5,16 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import PropTypes from "prop-types";
 
 import CanvasLoader from "../Loader";
+import { Html } from "@react-three/drei";
 
-const Computers = ({ isMobile }) => {
+const ComputersModel = () => {
   const computer = useGLTF("./desktop_pc/scene.gltf");
 
-  Computers.propTypes = {
-    isMobile: PropTypes.bool.isRequired,
-  };
+  // Computers.propTypes = {
+  //   isMobile: PropTypes.bool.isRequired,
+  // };
 
-  const scale = isMobile ? 0.3 : 0.6; // Adjust the scale factor as needed
+  const scale = 0.6; // Adjust the scale factor as needed
 
   return (
     <mesh className="z-50">
@@ -29,12 +30,26 @@ const Computers = ({ isMobile }) => {
       />
       <primitive
         object={computer.scene}
-        scale={(isMobile ? 0.7 : 0.75, scale)}
-        position={isMobile ? [0, -2, -0.5] : [0, -3.6, -1]}
+        scale={scale}
+        position={[0, -3.6, -1]}
         rotation={[-0.01, -0.2, -0.1]}
       />
     </mesh>
   );
+};
+
+const MobileImage = () => (
+  <Html>
+    <div className="z-50"></div>
+  </Html>
+);
+
+const Computers = ({ isMobile }) => {
+  Computers.propTypes = {
+    isMobile: PropTypes.bool.isRequired,
+  };
+
+  return isMobile ? <MobileImage /> : <ComputersModel />;
 };
 
 const ComputersCanvas = () => {
