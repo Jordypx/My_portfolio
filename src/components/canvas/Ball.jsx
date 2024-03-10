@@ -48,7 +48,7 @@ const ImageFallback = ({ imgUrl }) => (
 );
 
 const BallCanvas = ({ icon }) => {
-  const isMobile = useMediaQuery({ maxWidth: 500 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
     <div>
