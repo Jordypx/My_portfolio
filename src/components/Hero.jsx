@@ -24,7 +24,11 @@ const Hero = () => {
         </div>
       </div>
 
-      {!isMobile && <ComputersCanvas />}
+      {!isMobile && (
+        <div className="computers-canvas ">
+          <ComputersCanvas />
+        </div>
+      )}
     </section>
   );
 };
